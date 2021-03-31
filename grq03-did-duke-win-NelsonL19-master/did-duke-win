@@ -1,0 +1,47 @@
+#!/bin/bash
+# Author: Nelson Lopez
+# PID: 730157511
+# I pledge the UNC and COMP290 Honor Code.
+
+testurl="${@}"
+
+
+#Help Functionality
+if [ "${testurl}" = "--help" ]
+   then
+   echo "Usage: did-duke-win [test-url]"
+   exit 1
+   fi
+
+   
+#If a Test URL if provided   
+if [ ! -z "${testurl}" ] 
+then 
+    # crawls the URL provided silently, then silently searches for the Keyword YES
+    curl -s "${testurl}" | grep --s  "YES" 
+    #Checks to see if the exit code says that the word was found
+    
+   if  [ ${?} -eq 0 ] 
+    then 
+        echo "Yes."
+        exit 0    
+    fi 
+        echo "No!"
+        exit 0 
+    fi 
+
+
+
+ # crawls the current site online for the keyword YES
+curl -s https://diddukewin.com/ | grep --s  "YES"
+
+
+if  [ ${?} -eq 0 ]
+         then 
+             echo "Yes."
+             exit 0
+         fi
+echo "No!"
+exit 0
+
+    

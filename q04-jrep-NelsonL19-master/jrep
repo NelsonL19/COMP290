@@ -1,0 +1,9 @@
+#!/bin/bash
+
+script_path="$(realpath ${0})"
+script_dir="$(dirname ${script_path})"
+export CLASSPATH="${script_dir}/bin"
+
+ java comp290.Jrep "${@}"
+
+
